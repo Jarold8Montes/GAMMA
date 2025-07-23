@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios de Consultoría Empresarial</title>
+  <!-- Enlace a la fuente Poppins de Google Fonts para un estilo moderno y legible -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos generales del cuerpo de la página */
+    body {
+      font-family: 'Poppins', sans-serif; /* Fuente principal */
+      margin: 0; /* Elimina el margen predeterminado del cuerpo */
+      padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+      background-color: #1A1A1A; /* Color de fondo oscuro (casi negro) */
+      color: #EEEEEE; /* Color de texto claro para contraste */
+      line-height: 1.6; /* Espaciado de línea para mejor legibilidad */
+    }
+
+    /* Estilos del encabezado */
+    header {
+      background-color: #1A1A1A; /* Color de fondo oscuro */
+      color: white; /* Color de texto blanco */
+      padding: 40px 20px; /* Relleno superior/inferior y lateral */
+      text-align: center; /* Centra el texto */
+      animation: fadeInDown 1s ease-out; /* Animación de entrada para el encabezado */
+    }
+
+    /* Animación para el encabezado */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Estilos del título principal en el encabezado */
+    header h1 {
+      margin: 0; /* Elimina el margen predeterminado */
+      font-size: 2.5rem; /* Tamaño de fuente grande */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para el texto */
+    }
+
+    /* Estilos del párrafo descriptivo en el encabezado */
+    header p {
+      margin-top: 10px; /* Margen superior */
+      font-size: 1.2rem; /* Tamaño de fuente */
+      font-weight: 300; /* Grosor de fuente más ligero */
+    }
+
+    /* Contenedor principal para el contenido */
+    .container {
+      padding: 40px 20px; /* Relleno superior/inferior y lateral */
+      max-width: 1000px; /* Ancho máximo del contenedor */
+      margin: auto; /* Centra el contenedor horizontalmente */
+    }
+
+    /* Estilos para cada sección de servicio */
+    section {
+      margin-bottom: 40px; /* Margen inferior entre secciones */
+      background-color: #2C2C2C; /* Color de fondo gris oscuro para las secciones */
+      padding: 25px; /* Relleno interno */
+      border-left: 5px solid #FF6B35; /* Borde izquierdo naranja distintivo */
+      border-radius: 8px; /* Bordes redondeados */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave para profundidad */
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición para hover */
+      opacity: 0; /* Inicialmente oculto para la animación de scroll */
+      transform: translateY(20px); /* Inicialmente desplazado para la animación de scroll */
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición para la animación de scroll */
+    }
+
+    /* Estado visible para la animación de scroll */
+    section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Efecto hover para las secciones */
+    section:hover {
+      transform: translateY(-5px); /* Pequeño levantamiento al pasar el ratón */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada al pasar el ratón */
+    }
+
+    /* Estilos para los títulos de las secciones */
+    section h2 {
+      color: #FF6B35; /* Color de texto naranja para los títulos de sección */
+      margin-top: 0; /* Elimina el margen superior predeterminado */
+      border-bottom: 2px solid rgba(255, 107, 53, 0.5); /* Línea inferior sutil */
+      padding-bottom: 10px; /* Espaciado debajo de la línea */
+      margin-bottom: 20px; /* Espaciado debajo del título */
+    }
+
+    /* Estilos para las listas no ordenadas */
+    ul {
+      padding-left: 25px; /* Relleno izquierdo para las viñetas */
+      list-style-type: disc; /* Tipo de viñeta */
+    }
+
+    /* Estilos para los elementos de la lista */
+    ul li {
+      margin-bottom: 10px; /* Margen inferior entre elementos de la lista */
+      transition: color 0.2s ease-in-out; /* Transición para hover */
+    }
+
+    /* Efecto hover para los elementos de la lista */
+    ul li:hover {
+      color: #FF6B35; /* Cambia el color al pasar el ratón */
+    }
+
+    /* Estilos para la sección de conclusión */
+    .conclusion {
+      background-color: #2C2C2C; /* Color de fondo gris oscuro para la conclusión */
+      padding: 30px; /* Relleno interno */
+      text-align: center; /* Centra el texto */
+      border-radius: 8px; /* Bordes redondeados */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave */
+      margin-top: 60px; /* Margen superior para separarlo de las secciones */
+      animation: fadeIn 1.5s ease-out; /* Animación de entrada */
+    }
+
+    /* Animación para la conclusión */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Estilos para el título en la sección de conclusión */
+    .conclusion h3 {
+      color: #FF6B35; /* Color de texto naranja para el título de la conclusión */
+      font-size: 1.8rem; /* Tamaño de fuente */
+      margin-bottom: 15px; /* Margen inferior */
+    }
+
+    /* Estilos del pie de página */
+    .footer {
+      background-color: #1A1A1A; /* Color de fondo oscuro */
+      color: white; /* Color de texto blanco */
+      text-align: center; /* Centra el texto */
+      padding: 20px; /* Relleno interno */
+      font-size: 0.9rem; /* Tamaño de fuente ligeramente más pequeño */
+      margin-top: 50px; /* Margen superior para separarlo del contenido */
+    }
+
+    /* Estilos para los enlaces en el pie de página */
+    .footer a {
+      color: #FF6B35; /* Color de enlace naranja */
+      text-decoration: none; /* Sin subrayado */
+      margin: 0 10px; /* Margen horizontal entre enlaces */
+      transition: color 0.2s ease-in-out; /* Transición para hover */
+    }
+
+    /* Efecto hover para los enlaces del pie de página */
+    .footer a:hover {
+      color: #FFA500; /* Naranja más brillante al pasar el ratón */
+      text-decoration: underline; /* Subrayado al pasar el ratón */
+    }
+
+    /* Estilos para el botón "Leer Más" */
+    .read-more-btn {
+      background-color: #FF6B35; /* Color de fondo naranja */
+      color: white; /* Color de texto blanco */
+      border: none; /* Sin borde */
+      padding: 10px 15px; /* Relleno */
+      border-radius: 5px; /* Bordes redondeados */
+      cursor: pointer; /* Cursor de puntero */
+      font-size: 0.9rem; /* Tamaño de fuente */
+      margin-top: 15px; /* Margen superior */
+      transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Transición para hover */
+      display: block; /* Ocupa todo el ancho disponible */
+      width: fit-content; /* Ajusta el ancho al contenido */
+      margin-left: auto; /* Centra el botón */
+      margin-right: auto; /* Centra el botón */
+    }
+
+    .read-more-btn:hover {
+      background-color: #FFA500; /* Naranja más brillante al pasar el ratón */
+      transform: translateY(-2px); /* Pequeño levantamiento */
+    }
+
+    /* Contenido adicional oculto */
+    .more-content {
+      display: none; /* Oculto por defecto */
+      margin-top: 15px; /* Margen superior */
+      border-top: 1px dashed rgba(255, 107, 53, 0.3); /* Línea divisoria */
+      padding-top: 15px; /* Relleno superior */
+    }
+
+    /* Estilos para la nueva sección de IA */
+    .ai-feature-section {
+      background-color: #2C2C2C;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .ai-feature-section h3 {
+      color: #FF6B35;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .ai-feature-section textarea {
+      width: calc(100% - 40px); /* Ancho completo menos padding */
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background-color: #1A1A1A;
+      color: #EEEEEE;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      resize: vertical; /* Permite redimensionar verticalmente */
+      min-height: 100px;
+    }
+
+    .ai-feature-section button {
+      background-color: #FF6B35;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    .ai-feature-section button:hover {
+      background-color: #FFA500;
+      transform: translateY(-2px);
+    }
+
+    .ai-results {
+      margin-top: 25px;
+      padding: 20px;
+      background-color: #1A1A1A;
+      border: 1px dashed #FF6B35;
+      border-radius: 8px;
+      text-align: left;
+      min-height: 50px;
+      display: flex; /* Para centrar el spinner */
+      justify-content: center; /* Para centrar el spinner */
+      align-items: center; /* Para centrar el spinner */
+    }
+
+    .ai-results p {
+      margin: 0;
+      color: #EEEEEE;
+    }
+
+    .loading-spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid #FF6B35;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      display: none; /* Oculto por defecto */
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Media query para hacer el diseño responsivo en pantallas pequeñas */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem; /* Reduce el tamaño del título principal */
+      }
+      section {
+        padding: 20px; /* Reduce el relleno de las secciones */
+      }
+      .conclusion h3 {
+        font-size: 1.5rem; /* Reduce el tamaño del título de conclusión */
+      }
+      .ai-feature-section textarea {
+        width: calc(100% - 30px); /* Ajuste de ancho para móviles */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Consultoría que transforma empresas, personas y resultados</h1>
+  <p>Outsourcing RH · Soluciones para el sector industrial y más allá</p>
+</header>
+
+<div class="container">
+
+  <section id="diagnostico-organizacional">
+    <h2>1. Diagnóstico Organizacional</h2>
+    <p>El primer paso fundamental para cualquier mejora sostenida es una comprensión profunda de la situación actual de tu organización. Nuestro diagnóstico organizacional exhaustivo permite identificar no solo las debilidades y fortalezas evidentes, sino también las oportunidades ocultas y los desafíos subyacentes que pueden estar frenando tu crecimiento.</p>
+    <ul>
+      <li><strong>Entrevistas y análisis interno:</strong> Realizamos entrevistas a profundidad con el personal clave en todos los niveles, desde la dirección hasta el personal operativo, para obtener una visión 360 grados de la empresa.</li>
+      <li><strong>Revisión de estructuras, procesos y cultura:</strong> Evaluamos cómo están organizados los equipos, la eficiencia de los flujos de trabajo y la dinámica cultural que influye en la productividad y el ambiente laboral.</li>
+      <li><strong>Identificación de “zonas ciegas” operativas:</strong> A menudo, las empresas tienen áreas problemáticas que no son evidentes a simple vista. Nuestro análisis busca descubrir estas ineficiencias o riesgos no percibidos.</li>
+    </ul>
+    <div class="more-content">
+      <p>Utilizamos metodologías probadas para recopilar datos cualitativos y cuantitativos, que luego son analizados por nuestros expertos. Esto nos permite generar un informe detallado que no solo señala los problemas, sino que también propone soluciones accionables y personalizadas para tu empresa. Entender la raíz de los desafíos es clave para diseñar estrategias efectivas y garantizar que cada inversión en consultoría genere un retorno significativo.</p>
+      <p><strong>¿Sabes realmente qué está frenando tu crecimiento? Permítenos ayudarte a desvelarlo.</strong></p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <section id="planeacion-estrategica">
+    <h2>2. Planeación Estratégica</h2>
+    <p>La planeación estratégica es la brújula que guía a tu empresa hacia el éxito a largo plazo. Definimos una hoja de ruta sólida y adaptable que te permitirá alcanzar tus metas de negocio, manteniéndote ágil y relevante en un entorno de mercado en constante cambio. Nuestro enfoque asegura que cada acción esté alineada con tus objetivos más ambiciosos.</p>
+    <ul>
+      <li><strong>Construcción de misión, visión y valores:</strong> Ayudamos a definir o redefinir la esencia de tu empresa, estableciendo el propósito, la aspiración futura y los principios que guiarán todas las decisiones.</li>
+      <li><strong>Definición de KPIs estratégicos:</strong> Identificamos los Indicadores Clave de Rendimiento (KPIs) más relevantes que te permitirán medir el progreso hacia tus objetivos estratégicos de manera efectiva.</li>
+      <li><strong>Análisis FODA y PESTEL:</strong> Realizamos análisis profundos de Fortalezas, Oportunidades, Debilidades y Amenazas (FODA), así como de factores Políticos, Económicos, Sociales, Tecnológicos, Ecológicos y Legales (PESTEL) para una visión completa del entorno interno y externo.</li>
+    </ul>
+    <div class="more-content">
+      <p>Nuestra consultoría en planeación estratégica no se limita a la creación de documentos; se trata de facilitar un proceso colaborativo que involucre a los líderes de tu organización. Esto garantiza que la estrategia sea comprendida y adoptada por todos, transformándola en una herramienta viva que impulse la toma de decisiones diaria y la asignación de recursos. Te ayudamos a anticipar el futuro, no solo a reaccionar a él.</p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <section id="optimizacion-procesos">
+    <h2>3. Optimización de Procesos</h2>
+    <p>La eficiencia operativa es crucial para la rentabilidad. Rediseñamos tus procesos internos para aumentar significativamente la productividad, reducir errores costosos y eliminar retrabajos innecesarios. Implementamos soluciones prácticas que transforman tus operaciones, haciéndolas más fluidas, rápidas y rentables.</p>
+    <ul>
+      <li><strong>Mapeo y mejora continua:</strong> Documentamos tus procesos actuales para identificar cuellos de botella y áreas de mejora, implementando ciclos de mejora continua para asegurar la evolución constante.</li>
+      <li><strong>Implementación de automatizaciones:</strong> Identificamos tareas repetitivas y manuales que pueden ser automatizadas, liberando a tu equipo para enfocarse en actividades de mayor valor estratégico.</li>
+      <li><strong>Metodologías Lean aplicadas:</strong> Adoptamos principios Lean para eliminar el desperdicio en todas sus formas, optimizando los flujos de trabajo y maximizando el valor para el cliente.</li>
+    </ul>
+    <div class="more-content">
+      <p>Nuestros expertos trabajan codo a codo con tus equipos para asegurar una implementación exitosa y una adopción efectiva de los nuevos procesos. No solo te mostramos cómo mejorar, sino que te acompañamos en el camino para que los cambios se arraiguen y generen beneficios duraderos. Desde la manufactura hasta los servicios, la optimización de procesos es la clave para escalar tu negocio de manera sostenible.</p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <section id="gestion-capital-humano">
+    <h2>4. Gestión del Capital Humano</h2>
+    <p>Tu equipo es tu activo más valioso. Transformamos tu capital humano en tu mayor ventaja competitiva a través de estrategias integrales de talento que abarcan desde la atracción hasta el desarrollo y la retención. Creamos un ambiente donde el talento florece y contribuye directamente a los objetivos de tu empresa.</p>
+    <ul>
+      <li><strong>Reclutamiento especializado:</strong> Atraemos y seleccionamos a los mejores talentos que no solo cumplen con los requisitos técnicos, sino que también se alinean con la cultura y los valores de tu organización.</li>
+      <li><strong>Capacitación y planes de carrera:</strong> Diseñamos programas de formación personalizados y rutas de desarrollo profesional que potencian las habilidades de tus empleados y fomentan su crecimiento dentro de la empresa.</li>
+      <li><strong>Evaluación del desempeño:</strong> Implementamos sistemas de evaluación justos y efectivos que miden el rendimiento, proporcionan retroalimentación constructiva y guían el desarrollo individual y colectivo.</li>
+    </ul>
+    <div class="more-content">
+      <p>Nuestra consultoría en RH va más allá de la administración de personal; se enfoca en construir una fuerza laboral comprometida, motivada y altamente productiva. Te ayudamos a desarrollar estrategias de compensación y beneficios, programas de bienestar, y a fomentar una cultura organizacional que promueva la innovación y la colaboración. Un equipo fuerte es la base de un negocio exitoso.</p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <section id="consultoria-financiera">
+    <h2>5. Consultoría Financiera y de Ingresos</h2>
+    <p>Impulsamos tu rentabilidad con un control de costos riguroso, una administración financiera optimizada y una visión clara de tus ingresos. Te proporcionamos las herramientas y el conocimiento para tomar decisiones financieras informadas que maximicen tus ganancias y aseguren la sostenibilidad a largo plazo de tu negocio.</p>
+    <ul>
+      <li><strong>Proyecciones y análisis financiero:</strong> Desarrollamos modelos financieros y proyecciones detalladas que te permiten anticipar escenarios, evaluar riesgos y planificar inversiones futuras.</li>
+      <li><strong>Reducción de gastos innecesarios:</strong> Identificamos y eliminamos costos que no añaden valor, optimizando tus gastos operativos sin comprometer la calidad o la eficiencia.</li>
+      <li><strong>Modelado de ingresos:</strong> Creamos estrategias para diversificar y aumentar tus fuentes de ingresos, explorando nuevos mercados, modelos de precios y oportunidades de crecimiento.</li>
+    </ul>
+    <div class="more-content">
+      <p>Nuestra consultoría financiera te ayuda a comprender a fondo tus números, desde el flujo de caja hasta el balance general. Te asistimos en la implementación de controles internos, la gestión de deuda y la planificación fiscal, asegurando que tu estructura financiera sea robusta y eficiente. Con una sólida base financiera, tu empresa estará preparada para cualquier desafío y oportunidad.</p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <section id="gestion-cambio">
+    <h2>6. Gestión del Cambio y Cultura Organizacional</h2>
+    <p>En el dinámico entorno empresarial actual, la capacidad de adaptarse es clave. Acompañamos la evolución de tu empresa y sus personas durante momentos de transformación clave, como fusiones, adquisiciones, reestructuraciones o la implementación de nuevas tecnologías. Aseguramos una transición suave y una adopción exitosa de los cambios.</p>
+    <ul>
+      <li><strong>Planes de comunicación interna:</strong> Diseñamos estrategias de comunicación claras y transparentes para mantener a todos los empleados informados y comprometidos durante el proceso de cambio.</li>
+      <li><strong>Talleres de adaptación cultural:</strong> Facilitamos talleres y actividades que ayudan a los equipos a comprender y adoptar la nueva cultura organizacional, fomentando la cohesión y el sentido de pertenencia.</li>
+      <li><strong>Gestión de resistencia al cambio:</strong> Identificamos y abordamos las fuentes de resistencia, proporcionando herramientas y apoyo para que los empleados superen la incertidumbre y abracen las nuevas formas de trabajar.</li>
+    </ul>
+    <div class="more-content">
+      <p>Nuestro enfoque en la gestión del cambio se centra en el factor humano, reconociendo que el éxito de cualquier transformación depende de la aceptación y el compromiso de las personas. Te ayudamos a construir una cultura organizacional resiliente, innovadora y preparada para el futuro, donde el cambio es visto como una oportunidad de crecimiento.</p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <section id="tecnologias-informacion">
+    <h2>7. Tecnologías de la Información</h2>
+    <p>En la era digital, la tecnología es un motor de crecimiento. Digitalizamos tu empresa de forma estratégica, con herramientas y soluciones que se adaptan perfectamente a tus metas de negocio. Desde la infraestructura hasta el software, optimizamos tu ecosistema tecnológico para mejorar la eficiencia y la competitividad.</p>
+    <ul>
+      <li><strong>Implementación de ERP y CRM:</strong> Te asesoramos en la selección e implementación de sistemas de Planificación de Recursos Empresariales (ERP) y Gestión de Relaciones con Clientes (CRM) para integrar tus operaciones y mejorar la interacción con tus clientes.</li>
+      <li><strong>Soluciones en la nube y trabajo colaborativo:</strong> Facilitamos la migración a la nube y la adopción de herramientas colaborativas que permiten a tus equipos trabajar de forma más eficiente y flexible, desde cualquier lugar.</li>
+      <li><strong>Seguridad de la información:</strong> Implementamos protocolos y sistemas de seguridad robustos para proteger tus datos más valiosos contra amenazas cibernéticas y garantizar la continuidad del negocio.</li>
+    </ul>
+    <div class="more-content">
+      <p>Nuestros expertos en TI te ayudan a navegar por el complejo panorama tecnológico, identificando las soluciones más adecuadas para tus necesidades específicas. No solo implementamos tecnología, sino que te capacitamos para que la aproveches al máximo, transformando tus procesos y abriendo nuevas oportunidades de negocio. La digitalización inteligente es el camino hacia la eficiencia y la innovación.</p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <section id="consultoria-comercial">
+    <h2>8. Consultoría Comercial</h2>
+    <p>Conectamos tus productos o servicios con el cliente ideal mediante estrategias comerciales de alto impacto que impulsan las ventas y el crecimiento. Desde la definición de tu propuesta de valor hasta la expansión a nuevos mercados, te ayudamos a construir relaciones duraderas con tus clientes y a maximizar tu alcance.</p>
+    <ul>
+      <li><strong>Marketing B2B enfocado:</strong> Desarrollamos estrategias de marketing dirigidas a empresas, optimizando tus canales y mensajes para atraer a tus clientes corporativos ideales.</li>
+      <li><strong>Entrenamiento de fuerza de ventas:</strong> Capacitamos a tu equipo de ventas con las últimas técnicas y herramientas para mejorar su rendimiento, cerrar más negocios y construir relaciones sólidas con los clientes.</li>
+      <li><strong>Expansión de canales y mercados:</strong> Identificamos nuevas oportunidades de mercado y te ayudamos a desarrollar estrategias para expandir tu presencia, ya sea a través de nuevos canales de distribución o la entrada a nuevas geografías.</li>
+    </ul>
+    <div class="more-content">
+      <p>Nuestra consultoría comercial se basa en un profundo conocimiento del mercado y del comportamiento del consumidor. Te ayudamos a optimizar tu embudo de ventas, a mejorar la retención de clientes y a construir una marca fuerte y reconocible. Con una estrategia comercial sólida, tu negocio no solo crecerá, sino que prosperará en un mercado competitivo.</p>
+    </div>
+    <button class="read-more-btn">Leer Más</button>
+  </section>
+
+  <!-- Nueva sección para la funcionalidad de IA -->
+  <div class="ai-feature-section">
+    <h3>Generador de Ideas Estratégicas ✨</h3>
+    <p>Describe brevemente un desafío o área de mejora en tu negocio y obtén una idea estratégica instantánea.</p>
+    <textarea id="businessChallengeInput" placeholder="Ej: 'Cómo mejorar la retención de clientes en un mercado competitivo' o 'Estrategias para optimizar la cadena de suministro.'"></textarea>
+    <button id="generateIdeaBtn">Generar Idea ✨</button>
+    <div class="ai-results" id="aiIdeaOutput">
+      <div class="loading-spinner" id="loadingSpinner"></div>
+      <p id="initialMessage">Tu idea estratégica aparecerá aquí.</p>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>¿Estás listo para transformar tu empresa con una estrategia a la medida?</h3>
+    <p>Contáctanos y comienza tu camino hacia la eficiencia y el crecimiento.</p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>© 2025 Outsourcing RH · Todos los derechos reservados</p>
+  <p>
+    <a href="#">Facebook</a> |
+    <a href="#">LinkedIn</a> |
+    <a href="#">Contacto</a>
+  </p>
+</footer>
+
+<script>
+  // JavaScript para animaciones al hacer scroll y funcionalidad "Leer Más"
+
+  // Función para manejar la visibilidad de las secciones al hacer scroll
+  const sections = document.querySelectorAll('section');
+
+  const observerOptions = {
+    root: null, // El viewport es el root
+    rootMargin: '0px',
+    threshold: 0.1 // Cuando el 10% de la sección es visible
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); // Dejar de observar una vez que es visible
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Funcionalidad "Leer Más"
+  document.querySelectorAll('.read-more-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const moreContent = this.previousElementSibling; // El div .more-content es el hermano anterior
+      if (moreContent.style.display === 'block') {
+        moreContent.style.display = 'none';
+        this.textContent = 'Leer Más';
+      } else {
+        moreContent.style.display = 'block';
+        this.textContent = 'Leer Menos';
+      }
+    });
+  });
+
+  // Funcionalidad de la API de Gemini
+  const businessChallengeInput = document.getElementById('businessChallengeInput');
+  const generateIdeaBtn = document.getElementById('generateIdeaBtn');
+  const aiIdeaOutput = document.getElementById('aiIdeaOutput');
+  const loadingSpinner = document.getElementById('loadingSpinner');
+  const initialMessage = document.getElementById('initialMessage');
+
+  generateIdeaBtn.addEventListener('click', async () => {
+    const promptText = businessChallengeInput.value.trim();
+    if (!promptText) {
+      aiIdeaOutput.innerHTML = '<p style="color: #FF6B35;">Por favor, describe un desafío para generar una idea.</p>';
+      return;
+    }
+
+    // Mostrar spinner y ocultar mensaje inicial
+    initialMessage.style.display = 'none';
+    aiIdeaOutput.innerHTML = ''; // Limpiar contenido anterior
+    loadingSpinner.style.display = 'block';
+
+    try {
+      let chatHistory = [];
+      chatHistory.push({ role: "user", parts: [{ text: `Genera una idea estratégica concisa y accionable para el siguiente desafío empresarial: "${promptText}". La respuesta debe ser directa y no exceder los 100 palabras. Enfócate en una solución práctica.` }] });
+
+      const payload = { contents: chatHistory };
+      const apiKey = ""; // La clave API será inyectada por el entorno de Canvas
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (result.candidates && result.candidates.length > 0 &&
+          result.candidates[0].content && result.candidates[0].content.parts &&
+          result.candidates[0].content.parts.length > 0) {
+        const text = result.candidates[0].content.parts[0].text;
+        aiIdeaOutput.innerHTML = `<p>${text}</p>`;
+      } else {
+        aiIdeaOutput.innerHTML = '<p style="color: #FF6B35;">No se pudo generar una idea. Intenta de nuevo.</p>';
+        console.error('Estructura de respuesta inesperada de la API:', result);
+      }
+    } catch (error) {
+      aiIdeaOutput.innerHTML = '<p style="color: #FF6B35;">Error al conectar con la IA. Intenta de nuevo más tarde.</p>';
+      console.error('Error al llamar a la API de Gemini:', error);
+    } finally {
+      loadingSpinner.style.display = 'none'; // Ocultar spinner
+    }
+  });
+</script>
+
+</body>
+</html>
